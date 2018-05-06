@@ -73,3 +73,14 @@ removeNonLowerCase string =
 
 removeOddNumbers xxs =
     [ [x | x <- xs, even x] | xs <- xxs ]
+
+-- Tuples:
+--      fst (x,y) - returns x (only for pairs)
+--      snd (x,y) - returns y (only for pairs)
+--      zip x y - gets list x and y and makes list of tuples as: [(x[0], y[0]), (x[1], y[1]), ...]
+--      example:
+enumerateListToTuple list =
+    zip [1..] list
+
+rightTriangles maxLength =
+    [(a,b,c) | c <- [1..maxLength], a <- [1..c], b <- [1..c], a^2 + b^2 == c^2]
