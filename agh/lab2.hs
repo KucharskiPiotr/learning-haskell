@@ -1,3 +1,5 @@
+import Data.List
+
 -- Examples
 fib 0 = 1
 fib 1 = 1
@@ -53,7 +55,13 @@ delete_dup (x:list) =
 
 -- Function returns list of elements that are repeated in list at least 
 -- given times
--- at_least :: Eq a => ([a], Int) -> [a]
-at_least (x:list, n) =
-    filter (\a -> length a >= n) (x : (filter (==x) list))
-    
+at_least :: Eq a => ([a], Int) -> [a]
+at_least ([],_) = []
+at_least (x:list, n)  | (count_item x list) == n = (take ((count_item x list)+1) (repeat x)) ++ (at_least (list, n))
+                      | otherwise = at_least (list, n)
+
+-- Helping function
+count_item :: Eq a => a -> [a] -> Int
+count_item _ [] = 0
+count_item item (p:list)    | p == item = 1 + (count_item item list)
+                            | otherwise = count_item item list
