@@ -53,6 +53,7 @@ delete_dup (x:list) =
 
 -- Function returns list of elements that are repeated in list at least 
 -- given times
-at_least :: ([a], Int) -> [a]
+-- at_least :: Eq a => ([a], Int) -> [a]
 at_least (x:list, n) =
-    [x | x `elem` list
+    filter (\a -> length a >= n) (x : (filter (==x) list))
+    
