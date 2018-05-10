@@ -126,7 +126,26 @@ main = do
                     -- dajemy return noa i koniec
 
 -- QUicksort
-qso [] = []
-qso (x:xs) = small ++ [x] ++ big
-    where
-        small 
+-- qso [] = []
+-- qso (x:xs) = small ++ [x] ++ big
+--     where
+--         small 
+
+-- Implementacja drzew
+import Control.Monad.State
+import Control.Monad
+import System.Random
+
+data Atree a = ALeaf a | ANode (ATree a) (ATree a) deriving Show
+
+-- Wstawianie elementu do drzewa
+-- insertA x (ALeaf y) = ANode (ALeaf x) (ALeaf y)
+-- insertA x (ANode l r) 
+
+
+-- Funktory są po to żeby wprowadzić funkcję do wnętrza czegoś innego (np innej funkcji)
+-- np. fmap (+1) (Just 3)
+-- Definiuje się je na przykład na całe drzewo żeby coś zrobić i jest gitara
+
+-- Stan to po prostu taka zmienna niewidzialna dostępna dla danej funckji, odczyt za pomocą
+-- funkcji get a zapis za pomocą put(vartość)
