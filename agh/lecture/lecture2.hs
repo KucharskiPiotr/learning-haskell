@@ -149,3 +149,5 @@ data Atree a = ALeaf a | ANode (ATree a) (ATree a) deriving Show
 
 -- Stan to po prostu taka zmienna niewidzialna dostępna dla danej funckji, odczyt za pomocą
 -- funkcji get a zapis za pomocą put(vartość)
+
+-- Jak robi się za wiele elementow w funckji to lepiej zrobić abstrakcję (głównie w Monadzie)
