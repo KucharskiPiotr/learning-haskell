@@ -78,3 +78,55 @@ Nothing >>= f = Nothing
 -- Za pomocą tego wszystkiego można utrzymać kod w dobrym stanie
 -- po więcej informacji: :i Maybe
 
+-- Wykorzystanie:
+f1 a = if a > 3 then return 1 else Nothing
+-- W zależności od tego jaki jest kontekst to taką 1 zwróci
+-- Po wywołaniu f1 3 dostniemy błąd, ale jak damy f1 3 :: Maybe Int zwróci nam Nothing
+
+-- Przykład składania
+-- ghci> return 4 >>= f1 >>= f1 :: Maybe Int
+
+-- Takie funkcje:
+
+sqrEq a b c =
+    let delta = b*b - 4*a*c
+    -- bla bla
+    in case delta `compare` 0
+
+
+-- Tryb wyliczeniowy
+data Mob = Chicken
+        | Cow
+        | Horse
+        | Pig 
+        | Sheep
+        | Villager 
+        | Skeleton
+        | Creeeper
+        | Zombie
+        deriving Show
+
+-- Dopasowanie wzorca
+isHostile Zombie = True
+isHostile Skeleton = True
+isHostile Creeper = True
+isHostile _ = False
+
+-- type = synonim, np. type Id = String czyli Id to to samo co String
+--        używając type pozbawiamy sie tworzenie klasy, ale można zrobić new type Cos ale tylko
+--        z jednym parametrem możliwym
+-- data = umożliwa zrobienie wszystkiego, może być wolniejszy od type
+-- do = takie rozwinięcie <<=, pozwala zrobić parę rzeczy w kolejności jaki widać
+-- przypisanie takie w tym do to jest coś takiego:
+main :: IO ()
+main = do
+    line <- getLine
+    let noa = filter (/='a') line
+    print noa       -- należy zakończyć tym czym się zaczęło, jak nie wyjdzie nam tak jak trzeba to 
+                    -- dajemy return noa i koniec
+
+-- QUicksort
+qso [] = []
+qso (x:xs) = small ++ [x] ++ big
+    where
+        small 
