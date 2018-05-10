@@ -19,3 +19,5 @@ convertToInt str =
 
 convertListToIntList str =
     read str :: [Int]
+
+--      Enum - 
