@@ -9,7 +9,7 @@ instance Intable Char where
     toInt x = digitToInt x
 
 instance Intable [Char] where
-    toInt (x:list) = (digitToInt x) : (toInt list)
+    toInt num = read num :: Int
 
 mySuperAdd :: (Intable a) => a -> a -> Int
 mySuperAdd x y = toInt x + toInt y
