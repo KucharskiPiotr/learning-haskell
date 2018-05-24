@@ -40,3 +40,6 @@ findID :: (a -> Bool) -> [a] -> Maybe a
 findID _ [] = Nothing
 findID lambda (x:list)  | lambda x = Just x
                         | otherwise = findID lambda list
+
+
+-- Zadanie 4
