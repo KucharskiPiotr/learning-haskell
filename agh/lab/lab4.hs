@@ -60,3 +60,8 @@ search :: (Eq a) => a -> Tree a -> Bool
 search e (Tree (Node x) Empty Empty) = e == x
 search e (Tree (Node x) l r)    | e == x = True
                                 | otherwise = (search e l) || (search e r)
+
+toString :: (Show a) => Tree a -> String
+toString Empty = ""
+toString (Tree (Node x) l r) = 
+    ((show x) :: String) ++ "(" ++ (toString l) ++ "," ++ (toString r) ++ ")"
