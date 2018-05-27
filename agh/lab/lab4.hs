@@ -65,3 +65,9 @@ toString :: (Show a) => Tree a -> String
 toString Empty = ""
 toString (Tree (Node x) l r) = 
     ((show x) :: String) ++ "(" ++ (toString l) ++ "," ++ (toString r) ++ ")"
+
+leaves :: Tree a -> [a]
+leaves (Tree (Node x) Empty Empty) = [x]
+leaves (Tree (Node x) l Empty) = x : (leaves l)
+leaves (Tree (Node x) Empty r) = x : (leaves r)
+leaves (Tree (Node x) l r) = x : ((leaves l) ++ (leaves r))
