@@ -84,3 +84,14 @@ nsum (Tree (Node x) l Empty) = (nsum l) + x
 nsum (Tree (Node x) Empty r) = (nsum r) + x
 nsum (Tree (Node x) l r) = (nsum l) + (nsum r) + x
 
+-- I gave up with remove :(
+
+-- remove :: (Eq a) => a -> Tree a -> Maybe Tree a
+-- remove e (Tree (Node x) (Tree (Node l_e) l_l l_r) Empty)    | e == x = Just (Tree (Node l_e) l_l l_r)
+--                                                             | otherwise = remove (Tree (Node l_e) l_l l_r)
+-- remove e (Tree (Node x) Empty (Tree (Node r_e) r_l r_r))    | e == x = Just Tree ((Node r_e) r_l r_r)
+--                                                             | otherwise = remove (Tree (Node r_e) r_l r_r)
+-- remove e (Tree (Node x) Empty Empty)    | e == x = Nothing
+--                                         | otherwise = Just (Tree (Node x) Empty Empty)
+-- remove e (Tree (Node x) (Tree (Node l_x) (Tree (Node ll_x) ll_l ll_r) l_r) r)    | e == x = Just (Tree (Node l_x) (Tree (Node ll_x) ) r) 
+
