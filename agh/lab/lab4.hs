@@ -50,3 +50,6 @@ insert' e (Tree val Empty r) = Tree val (Tree (Node e) Empty Empty) r
 insert' e (Tree val l Empty) = Tree val l (Tree (Node e) Empty Empty)
 insert' e (Tree val l r) = Tree val (insert' e l) r
 
+empty' :: Tree a -> Bool
+empty' Empty = True
+empty' (Tree _ _ _) = False
