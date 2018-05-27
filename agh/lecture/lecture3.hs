@@ -16,3 +16,21 @@ data Nel a = Nel a [a]
 data Foo = A | B deriving Show
 
 nelMap f (Nel a as) = Nel (f a) (map f as)
+
+-- Ogarnij sobie ten kodzik:
+class Monoid m where 
+    mempty :: m
+    mappend :: m -> m -> m
+
+mappend === (<>)
+
+x <> mempty = x
+mempty <> x = 
+
+-- Praca na monolicie: to nie są liczby tylko określony
+-- typ i w ogóle. 
+
+-- Fun fact: jQuery jest monolitem
+
+-- w monadzie IO jest zapakowana kolejność jak coś ma 
+-- sie wykonać jedno poo

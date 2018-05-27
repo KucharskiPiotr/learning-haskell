@@ -31,15 +31,22 @@ instance Ord Osoba where
     (<) x y = (pesel x) < (pesel y)
     (>) x y = (pesel x) > (pesel y)
     
-
+    
 -- Zadanie 3
-comparePesel :: String -> Osoba -> Bool
-comparePesel str oso = str == pesel oso
-
-findID :: (a -> Bool) -> [a] -> Maybe a
-findID _ [] = Nothing
-findID lambda (x:list)  | lambda x = Just x
-                        | otherwise = findID lambda list
+doFunc _ [] = []
+doFunc func (x:list) =
+    if(func x)
+        then (x : (doFunc func list))
+        else (doFunc func list)
 
 
 -- Zadanie 4
+data Node a = Node a deriving (Show)
+data Tree a = Empty | Tree (Node a) (Tree a) (Tree a) deriving (Show)
+
+insert' :: a -> Tree a -> Tree a
+insert' e (Tree val Empty Empty) = Tree val (Tree (Node e) Empty Empty) Empty
+insert' e (Tree val Empty r) = Tree val (Tree (Node e) Empty Empty) r
+insert' e (Tree val l Empty) = Tree val l (Tree (Node e) Empty Empty)
+insert' e (Tree val l r) = Tree val (insert' e l) r
+
