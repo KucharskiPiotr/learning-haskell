@@ -94,4 +94,5 @@ nsum (Tree (Node x) l r) = (nsum l) + (nsum r) + x
 -- remove e (Tree (Node x) Empty Empty)    | e == x = Nothing
 --                                         | otherwise = Just (Tree (Node x) Empty Empty)
 -- remove e (Tree (Node x) (Tree (Node l_x) (Tree (Node ll_x) ll_l ll_r) l_r) r)    | e == x = Just (Tree (Node l_x) (Tree (Node ll_x) ) r) 
+-- ????
 
