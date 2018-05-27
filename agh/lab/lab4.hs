@@ -78,3 +78,9 @@ nnodes (Tree (Node x) l Empty) = (nnodes l) + 1
 nnodes (Tree (Node x) Empty r) = (nnodes r) + 1
 nnodes (Tree (Node x) l r) = (nnodes l) + (nnodes r) + 1
 
+nsum :: Tree Int -> Int
+nsum (Tree (Node x) Empty Empty) = x
+nsum (Tree (Node x) l Empty) = (nsum l) + x
+nsum (Tree (Node x) Empty r) = (nsum r) + x
+nsum (Tree (Node x) l r) = (nsum l) + (nsum r) + x
+
