@@ -44,12 +44,19 @@ doFunc func (x:list) =
 data Node a = Node a deriving (Show)
 data Tree a = Empty | Tree (Node a) (Tree a) (Tree a) deriving (Show)
 
+-- Apostrophe is for making function different from the one from library
 insert' :: a -> Tree a -> Tree a
 insert' e (Tree val Empty Empty) = Tree val (Tree (Node e) Empty Empty) Empty
 insert' e (Tree val Empty r) = Tree val (Tree (Node e) Empty Empty) r
 insert' e (Tree val l Empty) = Tree val l (Tree (Node e) Empty Empty)
 insert' e (Tree val l r) = Tree val (insert' e l) r
 
+-- Apostrophe is for making function different from the one from library
 empty' :: Tree a -> Bool
 empty' Empty = True
 empty' (Tree _ _ _) = False
+
+search :: (Eq a) => a -> Tree a -> Bool
+search e (Tree (Node x) Empty Empty) = e == x
+search e (Tree (Node x) l r)    | e == x = True
+                                | otherwise = (search e l) || (search e r)
