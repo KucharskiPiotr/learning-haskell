@@ -71,3 +71,10 @@ leaves (Tree (Node x) Empty Empty) = [x]
 leaves (Tree (Node x) l Empty) = x : (leaves l)
 leaves (Tree (Node x) Empty r) = x : (leaves r)
 leaves (Tree (Node x) l r) = x : ((leaves l) ++ (leaves r))
+
+nnodes :: Tree a -> Int
+nnodes (Tree (Node x) Empty Empty) = 1
+nnodes (Tree (Node x) l Empty) = (nnodes l) + 1
+nnodes (Tree (Node x) Empty r) = (nnodes r) + 1
+nnodes (Tree (Node x) l r) = (nnodes l) + (nnodes r) + 1
+
